@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @Service
 public class UserService {
-    @Autowired
+
     UserRepository repository;
 
     public UserService(UserRepository repository) {
@@ -25,22 +25,25 @@ public class UserService {
     }
 
 
-    //<<-------CHECK------->>
-    public Optional<User> checkUser(Integer id) {
-        return repository.findById(id);
+    //<<-------READ------->>
+    public User readUser(User newUser){
+        User user = repository.findByName(newUser.getName());
+        return user;
     }
+
+
 
     //<<-------DELETE------->>
     @Transactional
     public boolean deleteUser(User deleteUser){
         repository.delete(deleteUser);
-        Optional<User> user = checkUser(deleteUser.getId());
-        return user.isEmpty();
+        return true;
     }
 
-    //<<-------READ------->>
-    public User readUser(Integer userId){
-        return repository.findById(userId).orElseThrow();
+
+    //<<-------CHECK------->>
+    public Optional<User> checkUser(Integer id) {
+        return repository.findById(id);
     }
 
 
@@ -48,6 +51,9 @@ public class UserService {
     @Transactional
     public User updateUser(User updatedUser){
         User user = repository.save(updatedUser);
-        return readUser(user.getId());
+        return readUser(user);
     }
+
+
+
 }

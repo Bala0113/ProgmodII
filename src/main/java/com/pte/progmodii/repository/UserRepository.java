@@ -7,10 +7,14 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
+
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
 
-  //  @Query( value = "select p from User p where p.email like %:email%")
-  //  Optional<User> findByEmail(String email);
+    @Query( value = "select p from User p where p.name like %:name%")
+     User findByName(String name);
+
+    @Query( value = "select p from User p where p.email like %:email%")
+    Optional<User> findByEmail(String email);
 
 }

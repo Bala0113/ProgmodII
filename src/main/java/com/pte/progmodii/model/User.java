@@ -4,7 +4,6 @@ import lombok.Builder;
 import javax.persistence.*;
 
 @Entity
-@Builder
 @Table(name = "users")
 public class User {
 
@@ -16,11 +15,15 @@ public class User {
 
     private String email;
 
-    private String password;
+    private String number;
 
     private Integer age;
 
     private String address;
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public Integer getId() {
         return id;
@@ -42,12 +45,12 @@ public class User {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public String getNumber() {
+        return number;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setNumber(String number) {
+        this.number = number;
     }
 
     public Integer getAge() {
@@ -66,15 +69,16 @@ public class User {
         this.address = address;
     }
 
+
     public User() {
 
     }
 
-    public User(Integer id, String name, String email, String password, Integer age, String address) {
+    public User(Integer id, String name, String email, String number, Integer age, String address, String gender) {
         this.id = id;
         this.name = name;
         this.email = email;
-        this.password = password;
+        this.number = number;
         this.age = age;
         this.address = address;
     }
