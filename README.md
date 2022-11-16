@@ -10,7 +10,7 @@
 > - Put - Modosítás
 
  ## Controller
->Post get delete és a update helye, post vizsgálattal try catchben tölt az adatbázisba, get egyszerűen csak listáz minden elemet
+>Post get delete és a update helye.
 
  ## Model
 >USER felépítése id kijelölése és automatikus generálása getterek setterek helye.
